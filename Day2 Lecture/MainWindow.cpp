@@ -86,5 +86,103 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "Main", wxPoint(200, 200),
 }
 
 void MainWindow::OnButtonClick(wxCommandEvent& evt) {
-
+    if (FirstClick == true && text->GetLabelText() == "0") //check if the its ur first click and if the value on the screen is 0
+    {
+        text->SetLabelText("");
+        FirstClick = false;
+    }
+    if (evt.GetId() == 2) //zero
+    {
+        text->AppendText("0");
+    }
+    else if (evt.GetId() == 5) //one
+    {
+        text->AppendText("1");
+    }
+    else if (evt.GetId() == 6) //two
+    {
+        text->AppendText("2");
+    }
+    else if (evt.GetId() == 7) //three
+    {
+        text->AppendText("3");
+    }
+    else if (evt.GetId() == 9) //four
+    {
+        text->AppendText("4");
+    }
+    else if (evt.GetId() == 10) //five
+    {
+        text->AppendText("5");
+    }
+    else if (evt.GetId() == 11) //six
+    {
+        text->AppendText("6");
+    }
+    else if (evt.GetId() == 13) //seven
+    {
+        text->AppendText("7");
+    }
+    else if (evt.GetId() == 14) //eight
+    {
+        text->AppendText("8");
+    }
+    else if (evt.GetId() == 15) //nine
+    {
+        text->AppendText("9");
+    }
+    else if (evt.GetId() == 8) //plus
+    {
+        text->AppendText("+");
+    }
+    else if (evt.GetId() == 12) //minus
+    {
+        text->AppendText("-");
+    }
+    else if (evt.GetId() == 17) //Divide
+    {
+        text->AppendText("÷");
+    }
+    else if (evt.GetId() == 16) //Times
+    {
+        text->AppendText("×");
+    }
+    else if (evt.GetId() == 4) //Equals
+    {
+        text->AppendText("=");
+    }
+    else if (evt.GetId() == 3) //DOT
+    {
+        text->AppendText(".");
+    }
+    else if (evt.GetId() == 18) //MOD
+    {
+        text->AppendText("%");
+    }
+    else if (evt.GetId() == 20) //Clear
+    {
+        text->Clear();
+        text->SetLabelText("0");
+        evt.Skip();
+    }
+    //else if (evt.GetId() == 1) //POS NEG
+    //{
+    //    text->AppendText("+/-");
+    //}
+    //else if (evt.GetId() == 19) //BACK
+    //{
+    //    
+    //}
+    //else if (evt.GetId() == 21) //BIN
+    //{
+    //    
+    //}
+    //else if (evt.GetId() == 222) //HEX
+    //{
+    //    
+    //}
+    //else if (evt.GetId() == 23) //DEC
+    //{
+    //    
+    //}
 }
