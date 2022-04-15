@@ -1,5 +1,5 @@
 #pragma once
-#include "wx\wx.h"
+#include "ButtonFactory.h"
 class MainWindow : public wxFrame
 {
 private:
@@ -32,7 +32,8 @@ public:
 	bool FirstClick = true;
 	MainWindow();
 	void OnButtonClick(wxCommandEvent& evt);
-	wxString GetText();
+	void Operations();
+	wxString track;
 	wxDECLARE_EVENT_TABLE();
 };
 
