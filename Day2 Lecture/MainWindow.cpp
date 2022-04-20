@@ -194,7 +194,7 @@ void MainWindow::OnButtonClick(wxCommandEvent& evt) {
     }
     //else if (evt.GetId() == 1) //POS NEG
     //{
-    //    text->AppendText("+/-");
+    //    
     //}
     //else if (evt.GetId() == 19) //BACK
     //{
@@ -215,58 +215,64 @@ void MainWindow::OnButtonClick(wxCommandEvent& evt) {
 }
 void MainWindow::Operations()
 {
+   
     if (track.Contains("+"))
     {
-        wxString leftSide;
+       /* wxString leftSide;
         wxString rightSide;
         int find = track.find("+");
         leftSide = track.SubString(0, find);
         rightSide = track.SubString(find + 1, track.length());
-        int sum = wxAtoi(leftSide) + wxAtoi(rightSide);
+        int sum = wxAtoi(leftSide) + wxAtoi(rightSide);*/
+        int sum = cp->AddOp(track.ToStdString());
         text->SetLabelText(std::to_string(sum));
         track = std::to_string(sum);
     }
     else if (track.Contains("-"))
     {
-        wxString leftSide;
+        /*wxString leftSide;
         wxString rightSide;
         int find = track.find("-");
         leftSide = track.SubString(0, find);
         rightSide = track.SubString(find + 1, track.length());
-        int sum = wxAtoi(leftSide) - wxAtoi(rightSide);
+        int sum = wxAtoi(leftSide) - wxAtoi(rightSide);*/
+        int sum = cp->SubOp(track.ToStdString());
         text->SetLabelText(std::to_string(sum));
         track = std::to_string(sum);
     }
     else if (track.Contains("÷"))
     {
-        wxString leftSide;
+        /*wxString leftSide;
         wxString rightSide;
         int find = track.find("÷");
         leftSide = track.SubString(0, find);
         rightSide = track.SubString(find + 1, track.length());
-        int sum = wxAtoi(leftSide) / wxAtoi(rightSide);
+        int sum = wxAtoi(leftSide) / wxAtoi(rightSide);*/
+        int sum = cp->DivOp(track.ToStdString());
         text->SetLabelText(std::to_string(sum));
         track = std::to_string(sum);
     }
     else if (track.Contains("×"))
     {
-        wxString leftSide;
+        /*wxString leftSide;
         wxString rightSide;
         int find = track.find("×");
         leftSide = track.SubString(0, find);
         rightSide = track.SubString(find + 1, track.length());
-        int sum = wxAtoi(leftSide) * wxAtoi(rightSide);
+        int sum = wxAtoi(leftSide) * wxAtoi(rightSide);*/
+        int sum = cp->TimesOp(track.ToStdString());
         text->SetLabelText(std::to_string(sum));
         track = std::to_string(sum);
     }
     else if (track.Contains("%"))
     {
-        wxString leftSide;
+        /*wxString leftSide;
         wxString rightSide;
         int find = track.find("%");
         leftSide = track.SubString(0, find);
         rightSide = track.SubString(find + 1, track.length());
-        int sum = wxAtoi(leftSide) % wxAtoi(rightSide);
+        int sum = wxAtoi(leftSide) % wxAtoi(rightSide);*/
+        int sum = cp->ModOp(track.ToStdString());
         text->SetLabelText(std::to_string(sum));
         track = std::to_string(sum);
     }

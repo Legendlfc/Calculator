@@ -1,5 +1,6 @@
 #pragma once
 #include "ButtonFactory.h"
+#include "CalculatorProcessor.h"
 class MainWindow : public wxFrame
 {
 private:
@@ -29,6 +30,7 @@ private:
 	wxTextCtrl* text = nullptr;
 	static const std::string Stat;
 public:
+	CalculatorProcessor* cp = &CalculatorProcessor::getInstance();
 	bool FirstClick = true;
 	MainWindow();
 	void OnButtonClick(wxCommandEvent& evt);
