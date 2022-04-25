@@ -49,3 +49,35 @@ int CalculatorProcessor::ModOp(std::string t)
     rightSide = t.substr(find + 1, t.length());
     return std::atoi(leftSide.c_str()) % std::atoi(rightSide.c_str());
 }
+
+void CalculatorProcessor::AddCommand(IBaseCommand* cmd, int num) 
+{
+    if (lastcmd != nullptr)
+    {
+        lastcmd->rightNum = num;
+    }
+    cmdList.push_back(cmd);
+    lastcmd = cmd;
+}
+
+int CalculatorProcessor::Execute() 
+{
+    int num = 0;
+
+    for (std::list<IBaseCommand*>::iterator it = cmdList.begin(); it != cmdList.end();) 
+    {
+        (*it)->Execute();
+        num = (*it)->leftNum;
+        it++;
+
+        if (it == cmdList.end())
+        {
+            break;
+        }
+
+        (*it)->leftNum = num;
+    }
+    cmdList.clear();
+    lastcmd = nullptr;
+    return num;
+}

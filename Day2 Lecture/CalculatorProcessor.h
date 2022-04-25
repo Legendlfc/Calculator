@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <list>
+#include "IBaseCommand.h"
 class CalculatorProcessor
 {
 public:
@@ -12,6 +14,8 @@ private:
 	CalculatorProcessor() {
 
 	}
+	std::list<IBaseCommand*>cmdList;
+	IBaseCommand* lastcmd = nullptr;
 
 public:
 	int AddOp(std::string t);
@@ -19,5 +23,10 @@ public:
 	int DivOp(std::string t);
 	int TimesOp(std::string t);
 	int ModOp(std::string t);
+
+	void AddCommand(IBaseCommand* cmd, int num);
+
+	int Execute();
+	
 };
 

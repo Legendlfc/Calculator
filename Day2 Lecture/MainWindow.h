@@ -29,6 +29,7 @@ private:
 	wxButton* btnDec = nullptr;
 	wxTextCtrl* text = nullptr;
 	static const std::string Stat;
+	wxString numString;
 public:
 	CalculatorProcessor* cp = &CalculatorProcessor::getInstance();
 	bool FirstClick = true;
