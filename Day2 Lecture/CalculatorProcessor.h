@@ -18,15 +18,16 @@ private:
 	IBaseCommand* lastcmd = nullptr;
 
 public:
-	int AddOp(std::string t);
-	int SubOp(std::string t);
-	int DivOp(std::string t);
-	int TimesOp(std::string t);
+	float AddOp(std::string t);
+	float SubOp(std::string t);
+	float DivOp(std::string t);
+	float TimesOp(std::string t);
+	std::string BinOp(const std::string& t);
+	std::string HexOp(const std::string& t);
 	int ModOp(std::string t);
-
 	void AddCommand(IBaseCommand* cmd, int num);
-
-	int Execute();
+	void cmdClear();
+	float Execute();
 	
 };
 

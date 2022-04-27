@@ -22,7 +22,6 @@ private:
 	wxButton* btnTimes = nullptr;
 	wxButton* btnDivide = nullptr;
 	wxButton* btnClear = nullptr;
-	wxButton* btnBack = nullptr;
 	wxButton* btnMod = nullptr;
 	wxButton* btnBin = nullptr;
 	wxButton* btnHex = nullptr;
@@ -33,6 +32,7 @@ private:
 public:
 	CalculatorProcessor* cp = &CalculatorProcessor::getInstance();
 	bool FirstClick = true;
+	bool isBin = false;
 	MainWindow();
 	void OnButtonClick(wxCommandEvent& evt);
 	void Operations();

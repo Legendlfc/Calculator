@@ -2,15 +2,15 @@
 class IBaseCommand
 {
 public:
-	int rightNum;
-	int leftNum;
+	float rightNum;
+	float leftNum;
 
 	virtual void Execute() = 0;
 };
 
 class AddCommand : public IBaseCommand {
 public:
-	AddCommand(int lnum) {
+	AddCommand(float lnum) {
 		leftNum = lnum;
 		rightNum = 0;
 	}
@@ -21,7 +21,7 @@ public:
 };
 class SubCommand : public IBaseCommand {
 public:
-	SubCommand(int lnum) {
+	SubCommand(float lnum) {
 		leftNum = lnum;
 		rightNum = 0;
 	}
@@ -32,7 +32,7 @@ public:
 };
 class TimesCommand : public IBaseCommand {
 public:
-	TimesCommand(int lnum) {
+	TimesCommand(float lnum) {
 		leftNum = lnum;
 		rightNum = 0;
 	}
@@ -49,12 +49,12 @@ public:
 	}
 
 	void Execute() {
-		leftNum %= rightNum;
+		leftNum = (int)rightNum % (int)leftNum;
 	}
 };
 class DivCommand : public IBaseCommand {
 public:
-	DivCommand(int lnum) {
+	DivCommand(float lnum) {
 		leftNum = lnum;
 		rightNum = 0;
 	}

@@ -50,11 +50,6 @@ wxButton* ButtonFactory::CreateClearButton(wxWindow* parent, wxWindowID id, cons
 	return new wxButton(parent, id, "C", pos, size);
 }
 
-wxButton* ButtonFactory::CreateBackButton(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size)
-{
-	return new wxButton(parent, id, "BACK", pos, size);
-}
-
 wxButton* ButtonFactory::CreateEqualButton(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size)
 {
 	return new wxButton(parent, id, "=", pos, size);

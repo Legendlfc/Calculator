@@ -1,43 +1,65 @@
 #include "CalculatorProcessor.h"
+#include <bitset>
+#include <sstream>
 
-int CalculatorProcessor::AddOp(std::string t)
+float CalculatorProcessor::AddOp(std::string t)
 {
     std::string leftSide;
     std::string rightSide;
     int find = t.find("+");
     leftSide = t.substr(0, find);
     rightSide = t.substr(find + 1, t.length());
-    return std::atoi(leftSide.c_str()) + std::atoi(rightSide.c_str());
+    return std::atof(leftSide.c_str()) + std::atof(rightSide.c_str());
 }
 
-int CalculatorProcessor::SubOp(std::string t)
+float CalculatorProcessor::SubOp(std::string t)
 {
     std::string leftSide;
     std::string rightSide;
     int find = t.find("-");
     leftSide = t.substr(0, find);
     rightSide = t.substr(find + 1, t.length());
-    return std::atoi(leftSide.c_str()) - std::atoi(rightSide.c_str());
+    return std::atof(leftSide.c_str()) - std::atof(rightSide.c_str());
 }
 
-int CalculatorProcessor::DivOp(std::string t)
+float CalculatorProcessor::DivOp(std::string t)
 {
     std::string leftSide;
     std::string rightSide;
     int find = t.find("÷");
     leftSide = t.substr(0, find);
     rightSide = t.substr(find + 1, t.length());
-    return std::atoi(leftSide.c_str()) / std::atoi(rightSide.c_str());
+    return std::atof(leftSide.c_str()) / std::atof(rightSide.c_str());
 }
 
-int CalculatorProcessor::TimesOp(std::string t)
+float CalculatorProcessor::TimesOp(std::string t)
 {
     std::string leftSide;
     std::string rightSide;
     int find = t.find("×");
     leftSide = t.substr(0, find);
     rightSide = t.substr(find + 1, t.length());
-    return std::atoi(leftSide.c_str()) * std::atoi(rightSide.c_str());
+    return std::atof(leftSide.c_str()) * std::atof(rightSide.c_str());
+}
+
+std::string CalculatorProcessor::BinOp(const std::string& t)
+{
+    std::string temp;
+    std::bitset<12> bin(std::atoi(t.c_str()));
+    return bin.to_string();
+}
+
+std::string CalculatorProcessor::HexOp(const std::string& t)
+{
+    std::stringstream hex;
+    int num = std::atoi(t.c_str());
+    if (num > 0)
+    {
+        hex << "0x" << std::hex << num;
+
+    }
+    else hex << "-0x" << std::hex << (num*-1);
+    return hex.str();
 }
 
 int CalculatorProcessor::ModOp(std::string t)
@@ -60,7 +82,12 @@ void CalculatorProcessor::AddCommand(IBaseCommand* cmd, int num)
     lastcmd = cmd;
 }
 
-int CalculatorProcessor::Execute() 
+void CalculatorProcessor::cmdClear()
+{
+    cmdList.clear();
+}
+
+float CalculatorProcessor::Execute() 
 {
     int num = 0;
 
@@ -70,14 +97,13 @@ int CalculatorProcessor::Execute()
         num = (*it)->leftNum;
         it++;
 
-        if (it == cmdList.end())
-        {
-            break;
+        if (it != cmdList.end()) {
+            (*it)->leftNum = num;
         }
-
-        (*it)->leftNum = num;
+        else {
+            cmdList.clear();
+            lastcmd = nullptr;
+        }
     }
-    cmdList.clear();
-    lastcmd = nullptr;
     return num;
 }
